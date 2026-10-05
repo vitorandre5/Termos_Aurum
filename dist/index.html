@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0a1220" />
+    <meta name="description" content="Aurum Dashboard: plataforma interna de gestão e automação para a Aurum Detailing." />
+    <meta property="og:title" content="Aurum Dashboard" />
+    <meta property="og:description" content="Plataforma interna de gestão e automação para a Aurum Detailing." />
+    <meta property="og:type" content="website" />
+    <title>Aurum Dashboard | Gestão e automação interna</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a1220'/%3E%3Cpath d='M32 12 48 48h-8l-3.2-7.6H27L23.9 48H16L32 12Zm0 13.2-3.1 8h6.2l-3.1-8Z' fill='%23d8aa55'/%3E%3C/svg%3E" />
+    <style>
+      :root { --ink: #f4f0e8; --muted: #aeb8c5; --navy: #0a1220; --navy-2: #0e1a2b; --panel: #122238; --line: rgba(224, 184, 103, .2); --gold: #d8aa55; --gold-light: #f2d18b; --max: 1180px; }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; color: var(--ink); background: var(--navy); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+      a { color: inherit; }
+      .shell { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; }
+      .topbar { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; min-height: 84px; border-bottom: 1px solid rgba(255,255,255,.08); }
+      .brand { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; font-weight: 750; letter-spacing: -.02em; }
+      .mark { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 11px; color: var(--gold); font-family: Georgia, serif; font-size: 22px; }
+      .nav { display: flex; gap: 26px; color: var(--muted); font-size: 14px; }
+      .nav a { text-decoration: none; transition: color .2s ease; }
+      .nav a:hover, .nav a:focus-visible { color: var(--gold-light); }
+      .hero { position: relative; overflow: hidden; padding: 104px 0 118px; background: radial-gradient(circle at 78% 16%, rgba(216,170,85,.16), transparent 24%), linear-gradient(135deg, #0a1220 0%, #101d30 72%, #0a1220 100%); }
+      .hero::after { content: ""; position: absolute; width: 420px; height: 420px; right: -180px; bottom: -230px; border: 1px solid rgba(216,170,85,.2); border-radius: 50%; box-shadow: 0 0 0 42px rgba(216,170,85,.035), 0 0 0 84px rgba(216,170,85,.025); pointer-events: none; }
+      .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 74px; align-items: center; }
+      .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 22px; color: var(--gold-light); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+      .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); }
+      h1, h2, h3 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 500; letter-spacing: -.04em; line-height: 1.1; }
+      h1 { max-width: 760px; font-size: clamp(3.2rem, 7vw, 6.2rem); }
+      .hero-copy { max-width: 650px; margin: 28px 0 0; color: var(--muted); font-size: clamp(1.05rem, 1.7vw, 1.25rem); }
+      .hero-note { display: flex; gap: 12px; margin-top: 38px; color: #d7dee7; font-size: 14px; }
+      .hero-note span { color: var(--gold-light); }
+      .signal { position: relative; min-height: 318px; padding: 30px; border: 1px solid var(--line); border-radius: 24px; background: linear-gradient(145deg, rgba(21,39,62,.92), rgba(13,26,44,.62)); box-shadow: 0 22px 60px rgba(0,0,0,.2); }
+      .signal::before { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(255,255,255,.07); border-radius: 16px; pointer-events: none; }
+      .signal-top { position: relative; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; }
+      .signal-badge { display: inline-flex; align-items: center; gap: 7px; color: var(--gold-light); }
+      .signal-badge i { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 4px rgba(216,170,85,.12); }
+      .signal h2 { position: relative; margin-top: 62px; max-width: 300px; font-size: 2rem; }
+      .signal-line { position: absolute; right: 31px; bottom: 34px; width: 120px; height: 70px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); border-radius: 0 100% 0 0; transform: skewY(-21deg); opacity: .8; }
+      .section { padding: 112px 0; }
+      .section + .section { padding-top: 0; }
+      .section-heading { display: grid; grid-template-columns: .8fr 1.2fr; gap: 80px; align-items: start; margin-bottom: 56px; }
+      .section-kicker { margin: 7px 0 0; color: var(--gold); font-size: 12px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+      h2 { font-size: clamp(2.15rem, 4.2vw, 4rem); }
+      .lead { margin: 0; color: var(--muted); font-size: 1.08rem; }
+      .about { background: #0c1727; }
+      .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+      .info-card { min-height: 220px; padding: 30px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; background: rgba(255,255,255,.025); }
+      .card-number { color: var(--gold); font: 500 1.4rem Georgia, serif; }
+      .info-card h3 { margin-top: 34px; font-size: 1.45rem; }
+      .info-card p { margin: 14px 0 0; color: var(--muted); font-size: .96rem; }
+      .integration-layout { display: grid; grid-template-columns: 1fr .9fr; gap: 90px; align-items: center; }
+      .integration-list { display: grid; gap: 14px; }
+      .integration-item { display: flex; align-items: center; gap: 18px; padding: 21px 22px; border: 1px solid rgba(255,255,255,.09); border-radius: 14px; background: var(--panel); }
+      .integration-icon { display: grid; place-items: center; flex: 0 0 42px; height: 42px; border-radius: 12px; color: var(--gold-light); background: rgba(216,170,85,.1); font-weight: 800; }
+      .integration-item strong { display: block; font-size: 1.02rem; }
+      .integration-item span { display: block; color: var(--muted); font-size: .88rem; }
+      .side-note { padding: 31px; border-left: 2px solid var(--gold); background: linear-gradient(90deg, rgba(216,170,85,.11), transparent); }
+      .side-note p { margin: 0; color: #d5dce4; font-size: 1.05rem; }
+      .trust { background: #0c1727; }
+      .trust-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .trust-card { padding: 34px; border: 1px solid rgba(255,255,255,.08); border-radius: 16px; }
+      .trust-card h3 { font-size: 1.7rem; }
+      .trust-card p { margin: 16px 0 0; color: var(--muted); }
+      .footer { padding: 38px 0 44px; border-top: 1px solid rgba(255,255,255,.1); }
+      .footer-row { display: flex; justify-content: space-between; gap: 30px; align-items: center; }
+      .footer small { color: #758294; font-size: .82rem; }
+      .footer-links { display: flex; flex-wrap: wrap; gap: 20px; color: #c5ced9; font-size: .9rem; }
+      .footer-links a { text-decoration: none; }
+      .footer-links a:hover, .footer-links a:focus-visible { color: var(--gold-light); }
+      :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
+      @media (max-width: 820px) { .shell { width: min(calc(100% - 36px), var(--max)); } .topbar { min-height: 72px; } .nav { gap: 14px; font-size: 12px; } .hero { padding: 76px 0 82px; } .hero-grid, .section-heading, .integration-layout, .trust-grid { grid-template-columns: 1fr; gap: 34px; } .signal { min-height: 255px; } .signal h2 { margin-top: 42px; } .section { padding: 78px 0; } .about-grid { grid-template-columns: 1fr; } .info-card { min-height: auto; } .footer-row { align-items: flex-start; flex-direction: column; gap: 18px; } }
+      @media (max-width: 480px) { .shell { width: min(calc(100% - 28px), var(--max)); } .nav a:nth-child(-n+2) { display: none; } h1 { font-size: 3.35rem; } .hero-copy { font-size: 1rem; } .signal { padding: 22px; } .signal::before { inset: 13px; } .signal-line { right: 22px; bottom: 26px; } .section-heading { margin-bottom: 36px; } .footer-links { gap: 13px; flex-direction: column; } }
+    </style>
+  </head>
+  <body>
+    <header class="shell topbar">
+      <a class="brand" href="#inicio" aria-label="Aurum Dashboard, início"><span class="mark">A</span><span>Aurum Dashboard</span></a>
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a><a href="#integracoes">Integrações</a><a href="#seguranca">Segurança</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="shell hero-grid">
+          <div>
+            <p class="eyebrow">Aurum Detailing · Operação interna</p>
+            <h1>Aurum<br />Dashboard</h1>
+            <p class="hero-copy">Uma plataforma interna de gestão e automação criada para organizar processos e apoiar a operação da Aurum Detailing com mais clareza e eficiência.</p>
+            <p class="hero-note"><span>◆</span> Gestão operacional com acesso controlado</p>
+          </div>
+          <div class="signal" aria-label="Resumo do propósito do sistema">
+            <div class="signal-top"><span>Visão do sistema</span><span class="signal-badge"><i></i> ambiente interno</span></div>
+            <h2>Processos conectados. Rotinas mais simples.</h2>
+            <div class="signal-line" aria-hidden="true"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="sobre">
+        <div class="shell">
+          <div class="section-heading"><p class="section-kicker">01 / Sobre o sistema</p><div><h2>Estrutura para o trabalho que acontece nos bastidores.</h2><p class="lead">O Aurum Dashboard centraliza automações e processos operacionais para apoiar a equipe da Aurum Detailing nas tarefas do dia a dia.</p></div></div>
+          <div class="about-grid">
+            <article class="info-card"><span class="card-number">01</span><h3>Centralização</h3><p>Reúne automações e processos operacionais em uma estrutura organizada.</p></article>
+            <article class="info-card"><span class="card-number">02</span><h3>Organização</h3><p>Auxilia na consulta e organização das informações utilizadas pela empresa.</p></article>
+            <article class="info-card"><span class="card-number">03</span><h3>Otimização</h3><p>Foi desenvolvido para tornar tarefas administrativas e operacionais mais eficientes.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="integracoes">
+        <div class="shell integration-layout">
+          <div><p class="section-kicker">02 / Integrações</p><h2>Dados no lugar certo para cada workflow autorizado.</h2><p class="lead" style="margin-top:24px">O Aurum Dashboard pode se integrar aos serviços Google necessários para sua operação, sempre em funções relacionadas aos workflows internos autorizados.</p></div>
+          <div class="integration-list" aria-label="Serviços integrados">
+            <div class="integration-item"><span class="integration-icon">S</span><div><strong>Google Sheets</strong><span>Armazenamento, consulta e atualização de dados operacionais.</span></div></div>
+            <div class="integration-item"><span class="integration-icon">D</span><div><strong>Google Drive</strong><span>Organização e acesso a arquivos necessários aos fluxos internos.</span></div></div>
+            <div class="side-note"><p>As integrações são utilizadas apenas para funções relacionadas aos workflows autorizados.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section trust" id="seguranca">
+        <div class="shell">
+          <div class="section-heading"><p class="section-kicker">03 / Confiança e controle</p><div><h2>Uso responsável, acesso restrito.</h2><p class="lead">O sistema foi pensado para operar com o mínimo de acesso necessário e com transparência sobre o tratamento das informações.</p></div></div>
+          <div class="trust-grid">
+            <article class="trust-card"><h3>Uso dos dados</h3><p>O sistema acessa apenas os dados necessários para executar suas funções. Esse acesso depende de autorização OAuth. Os dados não são vendidos nem utilizados para publicidade. O tratamento das informações está descrito na <a href="https://melhornegocio.shop/privacidade-aurum-dashboard">Política de Privacidade</a>.</p></article>
+            <article class="trust-card"><h3>Segurança e acesso</h3><p>O Aurum Dashboard é destinado a uso interno e seu acesso é restrito a usuários autorizados. As autenticações com serviços Google são realizadas pelo protocolo OAuth 2.0.</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="shell footer-row"><small>© <span id="year">2026</span> Aurum Detailing. Aurum Dashboard.</small><div class="footer-links"><a href="https://melhornegocio.shop/privacidade-aurum-dashboard">Política de Privacidade</a><a href="https://melhornegocio.shop/termos-aurum-dashboard">Termos de Serviço</a><a href="mailto:vitorandregsilva@gmail.com">Contato</a></div></div>
+    </footer>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
