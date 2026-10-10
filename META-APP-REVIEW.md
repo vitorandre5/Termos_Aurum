@@ -5,9 +5,9 @@
 
 ## Produto e caso de uso
 
-ZapDetail e um software de agendamento para negocios de estetica em geral. E destinado a varias empresas, cada uma usando o servico para apoiar sua propria operacao; nao e uma ferramenta exclusiva de uma unica clinica.
+ZapDetail e um software de agendamento para negocios de estetica automotiva em geral. E destinado a varias empresas, cada uma usando o servico para apoiar sua propria operacao; nao e uma ferramenta exclusiva de uma unica empresa.
 
-A integracao planejada com a Plataforma WhatsApp Business recebera mensagens do proprietario e de funcionarios autorizados e apoiara a organizacao de horarios e agendamentos. Um cliente tambem podera iniciar uma conversa para solicitar atendimento ou horario. O conteudo necessario podera ser processado em workflows n8n e enviado a API da OpenAI para gerar uma resposta automatizada, conforme a configuracao efetivamente implementada.
+Agendamentos e dados operacionais podem ser inseridos pelo dashboard web ou enviados por WhatsApp. A integracao planejada com a Plataforma WhatsApp Business recebera mensagens do proprietario e de funcionarios autorizados e apoiara a organizacao de horarios e agendamentos. Um cliente tambem podera iniciar uma conversa para solicitar atendimento ou horario. O conteudo necessario podera ser processado em workflows n8n e enviado a API da OpenAI para gerar uma resposta automatizada, conforme a configuracao efetivamente implementada.
 
 A automacao para clientes respondera dentro da janela de atendimento de 24 horas aberta ou renovada pela mensagem mais recente do cliente. Fora dela, mensagens iniciadas pelo negocio exigem modelos aprovados e cumprimento das regras aplicaveis da Meta. Deve haver um caminho direto para atendimento humano. O produto nao deve iniciar contato sem permissao, enviar campanhas ou fazer envio em massa. O fluxo nao depende de mensagens em grupos.
 
@@ -36,7 +36,7 @@ A politica publica descreve os dados de mensagens e agendamento, provedores, uso
 
 ## Texto-base para revisar no painel da Meta
 
-> ZapDetail e um software de agendamento para diferentes negocios de estetica. Cada negocio usa o servico para apoiar a propria operacao. Com a Plataforma WhatsApp Business, o sistema recebera mensagens do proprietario e de funcionarios autorizados para ajudar a organizar horarios. Clientes poderao iniciar conversas para solicitar atendimento ou agendamento. O sistema processara somente os dados necessarios para responder e organizar a agenda, usando n8n e a API da OpenAI conforme configurado. Respostas automatizadas a clientes ocorrerao dentro da janela de atendimento de 24 horas; fora dela, somente com modelos aprovados e conforme as regras aplicaveis. Havera um caminho direto de atendimento humano. O servico nao enviara campanhas, mensagens em massa ou mensagens nao solicitadas. A integracao permanece inativa enquanto permissao, elegibilidade, onboarding e configuracoes sao confirmados.
+> ZapDetail e um software de agendamento para diferentes negocios de estetica automotiva. Cada negocio usa o servico para apoiar a propria operacao. O sistema permite inserir agendamentos e dados pelo dashboard web ou enviar essas informacoes por WhatsApp. Com a Plataforma WhatsApp Business, recebera mensagens do proprietario e de funcionarios autorizados para ajudar a organizar horarios. Clientes poderao iniciar conversas para solicitar atendimento ou agendamento. O sistema processara somente os dados necessarios para responder e organizar a agenda, usando n8n e a API da OpenAI conforme configurado. Respostas automatizadas a clientes ocorrerao dentro da janela de atendimento de 24 horas; fora dela, somente com modelos aprovados e conforme as regras aplicaveis. Havera um caminho direto de atendimento humano. O servico nao enviara campanhas, mensagens em massa ou mensagens nao solicitadas. A integracao permanece inativa enquanto permissao, elegibilidade, onboarding e configuracoes sao confirmados.
 
 Revisar este texto para corresponder exatamente ao produto implementado e ao video submetido; nao afirmar capacidades indisponiveis.
 
