@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0a1220" />
-    <meta name="description" content="Aurum Dashboard: plataforma interna de gestão e automação para a Aurum Detailing." />
-    <meta property="og:title" content="Aurum Dashboard" />
-    <meta property="og:description" content="Plataforma interna de gestão e automação para a Aurum Detailing." />
+    <meta name="description" content="ZapDetail: assistente de WhatsApp para negócios de estética. Organize a agenda com mensagens do proprietário e da equipe." />
+    <meta property="og:title" content="ZapDetail | Agenda para negócios de estética" />
+    <meta property="og:description" content="Assistente de WhatsApp para organizar agendamentos em diferentes negócios de estética." />
     <meta property="og:type" content="website" />
-    <title>Aurum Dashboard | Gestão e automação interna</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230a1220'/%3E%3Cpath d='M32 12 48 48h-8l-3.2-7.6H27L23.9 48H16L32 12Zm0 13.2-3.1 8h6.2l-3.1-8Z' fill='%23d8aa55'/%3E%3C/svg%3E" />
+    <title>ZapDetail | Agenda para negócios de estética</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2216%22 fill=%22%230a1220%22/%3E%3Ctext x=%2232%22 y=%2246%22 text-anchor=%22middle%22 font-size=%2244%22 fill=%22%23d8aa55%22%3EZ%3C/text%3E%3C/svg%3E" />
     <style>
       :root { --ink: #f4f0e8; --muted: #aeb8c5; --navy: #0a1220; --navy-2: #0e1a2b; --panel: #122238; --line: rgba(224, 184, 103, .2); --gold: #d8aa55; --gold-light: #f2d18b; --max: 1180px; }
       * { box-sizing: border-box; }
@@ -26,6 +26,10 @@
       .hero { position: relative; overflow: hidden; padding: 104px 0 118px; background: radial-gradient(circle at 78% 16%, rgba(216,170,85,.16), transparent 24%), linear-gradient(135deg, #0a1220 0%, #101d30 72%, #0a1220 100%); }
       .hero::after { content: ""; position: absolute; width: 420px; height: 420px; right: -180px; bottom: -230px; border: 1px solid rgba(216,170,85,.2); border-radius: 50%; box-shadow: 0 0 0 42px rgba(216,170,85,.035), 0 0 0 84px rgba(216,170,85,.025); pointer-events: none; }
       .hero-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 74px; align-items: center; }
+      .preview-layout { display: grid; grid-template-columns: 1fr minmax(250px, 330px); gap: 70px; align-items: center; }
+      .preview-figure { margin: 0; }
+      .preview-figure img { display: block; width: 100%; height: auto; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; box-shadow: 0 22px 60px rgba(0,0,0,.28); }
+      .preview-figure figcaption { margin-top: 12px; color: var(--muted); font-size: .85rem; text-align: center; }
       .eyebrow { display: inline-flex; align-items: center; gap: 9px; margin: 0 0 22px; color: var(--gold-light); font-size: 12px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
       .eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); }
       h1, h2, h3 { margin: 0; font-family: Georgia, "Times New Roman", serif; font-weight: 500; letter-spacing: -.04em; line-height: 1.1; }
@@ -72,71 +76,32 @@
       .footer-links a { text-decoration: none; }
       .footer-links a:hover, .footer-links a:focus-visible { color: var(--gold-light); }
       :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 4px; }
-      @media (max-width: 820px) { .shell { width: min(calc(100% - 36px), var(--max)); } .topbar { min-height: 72px; } .nav { gap: 14px; font-size: 12px; } .hero { padding: 76px 0 82px; } .hero-grid, .section-heading, .integration-layout, .trust-grid { grid-template-columns: 1fr; gap: 34px; } .signal { min-height: 255px; } .signal h2 { margin-top: 42px; } .section { padding: 78px 0; } .about-grid { grid-template-columns: 1fr; } .info-card { min-height: auto; } .footer-row { align-items: flex-start; flex-direction: column; gap: 18px; } }
+      @media (max-width: 820px) { .shell { width: min(calc(100% - 36px), var(--max)); } .topbar { min-height: 72px; } .nav { gap: 14px; font-size: 12px; } .hero { padding: 76px 0 82px; } .hero-grid, .section-heading, .integration-layout, .preview-layout, .trust-grid { grid-template-columns: 1fr; gap: 34px; } .signal { min-height: 255px; } .signal h2 { margin-top: 42px; } .section { padding: 78px 0; } .about-grid { grid-template-columns: 1fr; } .info-card { min-height: auto; } .footer-row { align-items: flex-start; flex-direction: column; gap: 18px; } }
       @media (max-width: 480px) { .shell { width: min(calc(100% - 28px), var(--max)); } .nav a:nth-child(-n+2) { display: none; } h1 { font-size: 3.35rem; } .hero-copy { font-size: 1rem; } .signal { padding: 22px; } .signal::before { inset: 13px; } .signal-line { right: 22px; bottom: 26px; } .section-heading { margin-bottom: 36px; } .footer-links { gap: 13px; flex-direction: column; } }
     </style>
   </head>
   <body>
     <header class="shell topbar">
-      <a class="brand" href="#inicio" aria-label="Aurum Dashboard, início"><span class="mark">A</span><span>Aurum Dashboard</span></a>
+      <a class="brand" href="#inicio" aria-label="ZapDetail, início"><span class="mark">Z</span><span>ZapDetail</span></a>
       <nav class="nav" aria-label="Navegação principal">
         <a href="#sobre">Sobre</a><a href="#integracoes">Integrações</a><a href="#seguranca">Segurança</a>
       </nav>
     </header>
 
     <main>
-      <section class="hero" id="inicio">
-        <div class="shell hero-grid">
-          <div>
-            <p class="eyebrow">Aurum Detailing · Operação interna</p>
-            <h1>Aurum<br />Dashboard</h1>
-            <p class="hero-copy">Uma plataforma interna de gestão e automação criada para organizar processos e apoiar a operação da Aurum Detailing com mais clareza e eficiência.</p>
-            <p class="hero-note"><span>◆</span> Gestão operacional com acesso controlado</p>
-          </div>
-          <div class="signal" aria-label="Resumo do propósito do sistema">
-            <div class="signal-top"><span>Visão do sistema</span><span class="signal-badge"><i></i> ambiente interno</span></div>
-            <h2>Processos conectados. Rotinas mais simples.</h2>
-            <div class="signal-line" aria-hidden="true"></div>
-          </div>
-        </div>
-      </section>
+      <section class="hero" id="inicio"><div class="shell hero-grid"><div><p class="eyebrow">Assistente de agenda para negócios de estética</p><h1>Agenda leve.<br />Atendimento no WhatsApp.</h1><p class="hero-copy">O ZapDetail ajuda clínicas, studios e outros negócios de estética a organizar agendamentos pelo WhatsApp. O proprietário e a equipe enviam solicitações ao assistente, que apoia a organização da agenda.</p><p class="hero-note"><span>◆</span> Feito para diferentes negócios de estética</p></div><div class="signal" aria-label="Resumo do propósito do sistema"><div class="signal-top"><span>Visão do sistema</span><span class="signal-badge"><i></i> WhatsApp e agenda</span></div><h2>O proprietário e a equipe conversam. A agenda se organiza.</h2><div class="signal-line" aria-hidden="true"></div></div></div></section>
 
-      <section class="section about" id="sobre">
-        <div class="shell">
-          <div class="section-heading"><p class="section-kicker">01 / Sobre o sistema</p><div><h2>Estrutura para o trabalho que acontece nos bastidores.</h2><p class="lead">O Aurum Dashboard centraliza automações e processos operacionais para apoiar a equipe da Aurum Detailing nas tarefas do dia a dia.</p></div></div>
-          <div class="about-grid">
-            <article class="info-card"><span class="card-number">01</span><h3>Centralização</h3><p>Reúne automações e processos operacionais em uma estrutura organizada.</p></article>
-            <article class="info-card"><span class="card-number">02</span><h3>Organização</h3><p>Auxilia na consulta e organização das informações utilizadas pela empresa.</p></article>
-            <article class="info-card"><span class="card-number">03</span><h3>Otimização</h3><p>Foi desenvolvido para tornar tarefas administrativas e operacionais mais eficientes.</p></article>
-          </div>
-        </div>
-      </section>
+      <section class="section" id="interface"><div class="shell preview-layout"><div><p class="section-kicker">Interface do software</p><h2>Uma visão prática da operação.</h2><p class="lead" style="margin-top:24px">O painel reúne indicadores do negócio e atalhos para áreas como agendamentos, clientes e orçamentos. Esta tela demonstra a interface do software; os valores exibidos são fictícios.</p></div><figure class="preview-figure"><img src="images/zapdetail-painel-exemplo.png" alt="Tela de visão geral do aplicativo com faturamento, despesas e atalhos para agendamentos, clientes e orçamentos. Os valores são fictícios." width="383" height="856" loading="lazy" /><figcaption>Exemplo demonstrativo da interface do ZapDetail. Valores fictícios.</figcaption></figure></div></section>
 
-      <section class="section" id="integracoes">
-        <div class="shell integration-layout">
-          <div><p class="section-kicker">02 / Integrações</p><h2>Dados no lugar certo para cada workflow autorizado.</h2><p class="lead" style="margin-top:24px">O Aurum Dashboard integra serviços Google para workflows internos autorizados. Uma integração com a Plataforma WhatsApp Business está planejada, mas ainda não está ativa. Quando aprovada e habilitada, poderá enviar respostas automáticas em conversas individuais iniciadas pelos próprios clientes, somente durante a janela de atendimento de 24 horas renovada pela mensagem mais recente do cliente; depois disso, este fluxo não enviará mensagens. A resposta automática oferecerá acesso direto ao atendimento humano pelo e-mail vitorandregsilva@gmail.com. O fluxo também poderá responder automaticamente em grupos internos de funcionários dedicados ao controle operacional, somente se a WABA for elegível à Groups API e os grupos forem compatíveis com os limites da Meta, incluindo até oito participantes por grupo, e o modelo de convite. O uso de grupos existentes não está confirmado. O processamento previsto usa n8n e OpenAI. Não haverá campanhas, publicidade, envio em massa nem início de conversas com clientes. Antes da ativação, serão confirmados permissões, avisos e consentimentos aplicáveis.</p></div>
-          <div class="integration-list" aria-label="Serviços integrados">
-            <div class="integration-item"><span class="integration-icon">S</span><div><strong>Google Sheets</strong><span>Armazenamento, consulta e atualização de dados operacionais.</span></div></div>
-            <div class="integration-item"><span class="integration-icon">D</span><div><strong>Google Drive</strong><span>Organização e acesso a arquivos necessários aos fluxos internos.</span></div></div>
-            <div class="side-note"><p>As integrações são utilizadas apenas para funções relacionadas aos workflows autorizados.</p></div>
-          </div>
-        </div>
-      </section>
+      <section class="section about" id="sobre"><div class="shell"><div class="section-heading"><p class="section-kicker">01 / Sobre o ZapDetail</p><div><h2>Uma ferramenta para a rotina de qualquer negócio de estética.</h2><p class="lead">O ZapDetail é um software para empresas de estética que usam o WhatsApp para coordenar a equipe e cuidar dos agendamentos. Cada negócio usa o serviço para apoiar a própria operação.</p></div></div><div class="about-grid"><article class="info-card"><span class="card-number">01</span><h3>Conversa com a equipe</h3><p>O proprietário e os funcionários podem enviar solicitações ao assistente pelo WhatsApp.</p></article><article class="info-card"><span class="card-number">02</span><h3>Agenda organizada</h3><p>Ajuda a organizar pedidos de horário e agendamentos em uma rotina centralizada.</p></article><article class="info-card"><span class="card-number">03</span><h3>Para várias estéticas</h3><p>O ZapDetail não é exclusivo de uma empresa: é pensado para diferentes negócios de estética.</p></article></div></div></section>
 
-      <section class="section trust" id="seguranca">
-        <div class="shell">
-          <div class="section-heading"><p class="section-kicker">03 / Confiança e controle</p><div><h2>Uso responsável, acesso restrito.</h2><p class="lead">O sistema foi pensado para operar com o mínimo de acesso necessário e com transparência sobre o tratamento das informações.</p></div></div>
-          <div class="trust-grid">
-            <article class="trust-card"><h3>Uso dos dados</h3><p>O sistema acessa apenas os dados necessários para executar suas funções. Esse acesso depende de autorização OAuth. Os dados não são vendidos nem utilizados para publicidade. O tratamento das informações está descrito na <a href="https://politicas.melhornegocio.shop/privacidade-aurum-dashboard">Política de Privacidade</a>.</p></article>
-            <article class="trust-card"><h3>Segurança e acesso</h3><p>O Aurum Dashboard é destinado a uso interno e seu acesso é restrito a usuários autorizados. As autenticações com serviços Google são realizadas pelo protocolo OAuth 2.0.</p></article>
-          </div>
-        </div>
-      </section>
+      <section class="section" id="integracoes"><div class="shell integration-layout"><div><p class="section-kicker">02 / WhatsApp e agenda</p><h2>O assistente recebe pedidos e ajuda a marcar horários.</h2><p class="lead" style="margin-top:24px">A proposta do ZapDetail é permitir que o proprietário e os funcionários enviem mensagens ao assistente pelo WhatsApp para organizar a rotina e os agendamentos do negócio. Clientes podem iniciar uma conversa para solicitar um horário. Respostas automatizadas a clientes seguem as regras do WhatsApp Business: dentro da janela de atendimento de 24 horas aberta pela mensagem do cliente e, fora dela, somente com modelos aprovados pela Meta. O cliente pode pedir atendimento humano por e-mail em <a href="mailto:vitorandregsilva@gmail.com">vitorandregsilva@gmail.com</a>. A integração com a Plataforma WhatsApp Business está em preparação e depende da habilitação técnica e das permissões aplicáveis. O ZapDetail é destinado a diferentes negócios de estética, sem vínculo exclusivo com uma clínica.</p></div><div class="integration-list" aria-label="Serviços integrados"><div class="integration-item"><span class="integration-icon">S</span><div><strong>Google Sheets</strong><span>Integração com planilhas para apoiar os fluxos autorizados.</span></div></div><div class="integration-item"><span class="integration-icon">D</span><div><strong>Google Drive</strong><span>Integração com arquivos necessários aos fluxos autorizados.</span></div></div><div class="side-note"><p>As integrações são usadas para apoiar os agendamentos e as tarefas operacionais autorizadas por cada negócio.</p></div></div></div></section>
+
+      <section class="section trust" id="seguranca"><div class="shell"><div class="section-heading"><p class="section-kicker">03 / Privacidade e controle</p><div><h2>Dados tratados para a rotina do negócio.</h2><p class="lead">O ZapDetail processa apenas as informações necessárias para atender aos pedidos enviados e organizar os agendamentos, de acordo com as configurações do serviço.</p></div></div><div class="trust-grid"><article class="trust-card"><h3>Uso dos dados</h3><p>Mensagens e dados de agendamento podem ser processados para executar as funções solicitadas. Os dados não são vendidos nem usados para publicidade. Consulte a <a href="https://politicas.melhornegocio.shop/privacidade-aurum-dashboard">Política de Privacidade do ZapDetail</a> para saber mais.</p></article><article class="trust-card"><h3>Acesso autorizado</h3><p>O serviço é disponibilizado a negócios de estética e seus usuários autorizados, como proprietários e funcionários. Algumas integrações com serviços Google usam OAuth 2.0.</p></article></div></div></section>
     </main>
 
     <footer class="footer">
-      <div class="shell footer-row"><small>© <span id="year">2026</span> Aurum Detailing. Aurum Dashboard.</small><div class="footer-links"><a href="https://politicas.melhornegocio.shop/privacidade-aurum-dashboard">Política de Privacidade</a><a href="https://politicas.melhornegocio.shop/termos-aurum-dashboard">Termos de Serviço</a><a href="mailto:vitorandregsilva@gmail.com">Contato</a></div></div>
+      <div class="shell footer-row"><small>© 2026 ZapDetail.</small><div class="footer-links"><a href="https://politicas.melhornegocio.shop/privacidade-aurum-dashboard">Política de Privacidade</a><a href="https://politicas.melhornegocio.shop/termos-aurum-dashboard">Termos de Serviço</a><a href="mailto:vitorandregsilva@gmail.com">Contato</a></div></div>
     </footer>
-    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
   </body>
 </html>
